@@ -13,8 +13,8 @@ checkstyle {
 }
 
 application {
-    mainModule = 'cs3500.pa05'
-    mainClass = 'cs3500.pa05.Driver'
+    mainModule = 'ftp'
+    mainClass = 'ftp.Driver'
 }
 
 // JaCoCo for code coverage
