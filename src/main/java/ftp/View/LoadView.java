@@ -1,10 +1,11 @@
 package ftp.View;
 
 import ftp.Controller.LoadController;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-import java.io.IOException;
+
 
 public class LoadView implements WindowView {
 

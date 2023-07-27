@@ -8,12 +8,12 @@ import javafx.application.Application;
  */
 public class Driver {
 
-  /**
-   * Entry point
-   *
-   * @param args - cmd line arguments
-   */
-  public static void main(String[] args) {
-    Application.launch(SetupManager.class, args);
-  }
+    /**
+     * Entry point
+     *
+     * @param args - cmd line arguments
+     */
+    public static void main(String[] args) {
+        Application.launch(SetupManager.class, args);
+    }
 }

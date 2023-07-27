@@ -54,6 +54,7 @@ public class SetupManager extends Application {
 
     public void swapToGame() {
         this.stage.getScene().setRoot(this.gameNode);
+        this.gameControl.run();
     }
 
     public void swapToRecords() {

@@ -1,8 +1,8 @@
 package ftp.View;
 
-import java.io.IOException;
-
 import ftp.Controller.GameController;
+
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -18,11 +18,11 @@ public class GameView implements WindowView {
     }
 
     public Parent load() throws IllegalStateException {
-      try {
-        return this.loader.load();
-      } catch (IOException e) {
-        throw new IllegalStateException("Unable to load");
-      }
+        try {
+            return this.loader.load();
+        } catch (IOException e) {
+            throw new IllegalStateException("Unable to load");
+        }
     }
 
 }

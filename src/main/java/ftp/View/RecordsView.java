@@ -1,10 +1,10 @@
 package ftp.View;
 
 import ftp.Controller.RecordsController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
+import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import javafx.scene.Parent;
 
 public class RecordsView implements WindowView{
     private FXMLLoader loader;
