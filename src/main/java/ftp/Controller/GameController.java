@@ -1,5 +1,7 @@
 package ftp.Controller;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ftp.Model.Coord;
 import ftp.Model.GridCell;
 import ftp.Model.Pokemon;
@@ -9,7 +11,6 @@ import java.util.Iterator;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,12 +22,14 @@ public class GameController {
     private static final int BOARD_WIDTH = 6;
     private static final int BOARD_HEIGHT = 6;
 
+    private String name = "";
     private int level;
     private Pokemon currentPokemon;
     private Coord currentPos;
     private List<Coord> sequenceAnswer;
     private Iterator<Coord> sequenceIterator;
     private SetupManager sceneMaster;
+    private boolean gameOver = false;
 
     @FXML
     private Button submit;
@@ -60,17 +63,46 @@ public class GameController {
         this.generatePokemon();
     }
 
+    @JsonCreator
+    public GameController(
+            @JsonProperty("level") int level,
+            @JsonProperty("currentPokemon") Pokemon currentPokemon,
+            @JsonProperty("score") int score,
+            @JsonProperty("lives") int lives,
+            @JsonProperty("name") String name) {
+        this.level = level;
+        this.currentPokemon = currentPokemon;
+        this.score = score;
+        this.lives = lives;
+        this.name = name;
+        this.userInput = new ArrayList<>();
+        this.boardLabel = new Label[BOARD_HEIGHT][BOARD_WIDTH];
+//        this.sceneMaster = sceneMaster;
+    }
+
+    public void initSceneMaster(SetupManager sceneMaster) {
+        this.sceneMaster = sceneMaster;
+    }
+
     public void run() {
         this.setLabels();
-        this.initButtons();
-        this.initBoard();
-        this.clearInput();
-        this.showAnimation();
+        if (!this.gameOver) {
+            this.initButtons();
+            this.initBoard();
+            this.clearInput();
+            this.showAnimation();
+        }
+    }
+
+    public void setGameName(String name) {
+        this.name = name;
     }
 
     private void setLabels() {
         if (this.lives == 0) {
-            this.sceneMaster.swapToGameOver();
+            this.gameOver = true;
+            this.sceneMaster.swapToGameOver(this.score);
+            return;
         }
         this.scoreLabel.setText("Score: " + this.score);
         this.livesLabel.setText("Lives: " + this.lives);
@@ -170,6 +202,7 @@ public class GameController {
     }
 
     private void nextTurn() {
+        System.out.println("new turn");
         if (this.currentPokemon.getVisible()) {
             this.boardLabel[currentPos.getY()][currentPos.getX()].setText("");
             this.currentPokemon.setVisible(false);
@@ -190,4 +223,27 @@ public class GameController {
         this.generatePokemon();
         this.showAnimation();
     }
+
+    // for json
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public Pokemon getCurrentPokemon() {
+        return this.currentPokemon;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public int getLives() {
+        return this.lives;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
 }

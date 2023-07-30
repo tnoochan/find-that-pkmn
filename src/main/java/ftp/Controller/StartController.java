@@ -23,7 +23,7 @@ public class StartController {
     }
 
     private void initButtons() {
-        this.newGame.setOnAction(e -> this.sceneMaster.swapToGame());
+        this.newGame.setOnAction(e -> this.sceneMaster.swapToIntro());
         this.topRecords.setOnAction(e -> this.sceneMaster.swapToRecords());
         this.loadGame.setOnAction(e -> this.sceneMaster.swapToLoadGame());
     }

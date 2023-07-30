@@ -1,11 +1,16 @@
 package ftp.Controller;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import ftp.Model.Json.GameStateJson;
 import ftp.View.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.nio.file.Path;
 
 public class SetupManager extends Application {
 
@@ -20,26 +25,44 @@ public class SetupManager extends Application {
     WindowView loadView;
     GameOverController gameOverControl;
     GameOverView gameOverView;
+    IntroController introControl;
+    WindowView introView;
 
     Parent startNode;
     Parent recordsNode;
     Parent gameNode;
     Parent loadNode;
     Parent gameOverNode;
+    Parent introNode;
+
+//    @JsonCreator
+//    public SetupManager(
+//            @JsonProperty("gameControl") GameController gameControl,
+//            @JsonProperty("recordsControl") RecordsController recordsControl) {
+//        this.gameControl = gameControl;
+//        this.recordsControl = recordsControl;
+//        this.initControlsAndView();
+//    }
 
 
     public SetupManager() {
-        this.startControl = new StartController(this);
         this.recordsControl = new RecordsController(this);
-        this.loadControl = new LoadController(this);
         this.gameControl = new GameController(this);
-        this.gameOverControl = new GameOverController(this);
+        this.initControlsAndView();
+    }
 
+    private void initControlsAndView() {
+        this.loadControl = new LoadController(this);
+        this.startControl = new StartController(this);
+        this.introControl = new IntroController(this);
+//        this.gameOverControl = new GameOverController(this);
         this.gameView = new GameView(this.gameControl);
         this.startView = new StartView(this.startControl);
         this.recordsView = new RecordsView(this.recordsControl);
         this.loadView = new LoadView(this.loadControl);
-        this.gameOverView = new GameOverView(this.gameOverControl);
+        this.introView = new IntroView(this.introControl);
+
+        //this.gameOverView = new GameOverView(this.gameOverControl);
     }
 
     @Override
@@ -57,11 +80,13 @@ public class SetupManager extends Application {
         this.recordsNode = this.recordsView.load();
         this.gameNode = this.gameView.load();
         this.loadNode = this.loadView.load();
-        this.gameOverNode = this.gameOverView.load();
+        this.introNode = this.introView.load();
+        //this.gameOverNode = this.gameOverView.load();
     }
 
-    public void swapToGame() {
+    public void swapToGame(String name) {
         this.stage.getScene().setRoot(this.gameNode);
+        this.gameControl.setGameName(name);
         this.gameControl.run();
     }
 
@@ -79,13 +104,52 @@ public class SetupManager extends Application {
         this.stage.getScene().setRoot(this.startNode);
     }
 
-    public void swapToGameOver() {
+    public void swapToGameOver(int finalScore) {
+        this.gameOverControl = new GameOverController(this);
+        this.gameOverView = new GameOverView(this.gameOverControl);
+        this.gameOverNode = this.gameOverView.load();
         this.stage.getScene().setRoot(this.gameOverNode);
+        this.gameOverControl.setFinalScore(finalScore);
         this.gameOverControl.run();
     }
 
+    public void swapToIntro() {
+        this.stage.getScene().setRoot(this.introNode);
+        this.introControl.run();
+    }
     public void endGame() {
-        System.out.println("Ending game and saving");
+        GameStateJson savedData = new GameStateJson(this.gameControl);
+        TxtFileOperator.write(savedData,
+                Path.of("savefiles/" + this.gameControl.getName() + ".txt"));
         Platform.exit();
     }
+
+    public void loadContent(GameStateJson record) {
+        GameController old = record.mainController();
+        this.gameControl = old;
+        this.gameControl.initSceneMaster(this);
+        this.gameView = new GameView(this.gameControl);
+        this.gameNode = this.gameView.load();
+        this.stage.getScene().setRoot(this.gameNode);
+        this.gameControl.run();
+    }
+
+    /*
+    public GameController(
+            @JsonProperty("level") int level,
+            @JsonProperty("currentPokemon") Pokemon currentPokemon,
+            @JsonProperty("score") int score,
+            @JsonProperty("lives") int lives,
+            @JsonProperty("name") String name,
+            SetupManager sceneMaster) {
+     */
+    // for json
+
+//    public GameController getGameControl() {
+//        return this.gameControl;
+//    }
+//
+//    public RecordsController getRecordsControl() {
+//        return this.recordsControl;
+//    }
 }

@@ -12,14 +12,16 @@ public class GameOverController {
     @FXML
     private Button exitButton;
     @FXML
-    private TextField textArea;
-    @FXML
-    private Label warning;
+    private Label finalScore;
 
     public GameOverController(SetupManager s) {
         this.sceneMaster = s;
+
     }
 
+    public void setFinalScore(int finalScore) {
+        this.finalScore.setText("Final score: " + Integer.toString(finalScore));
+    }
     public void run() {
         this.initButtons();
     }
@@ -29,12 +31,7 @@ public class GameOverController {
     }
 
     private void handleExit() {
-        if (textArea.getText().isEmpty()) {
-            System.out.println("don't save");
-        } else {
-            System.out.println(textArea.getText());
-            this.sceneMaster.endGame();
-        }
+        this.sceneMaster.endGame();
     }
 
 }

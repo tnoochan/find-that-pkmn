@@ -1,5 +1,7 @@
 package ftp.Model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
@@ -15,7 +17,9 @@ public class GridCell extends Label {
 
     private Coord pos;
 
-    public GridCell(Coord pos) {
+    @JsonCreator
+    public GridCell(
+            @JsonProperty("pos") Coord pos) {
         this.pos = pos;
     }
 
