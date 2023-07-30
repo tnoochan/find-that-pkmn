@@ -2,6 +2,7 @@ package ftp.Controller;
 
 import ftp.View.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,22 +18,28 @@ public class SetupManager extends Application {
     WindowView recordsView;
     LoadController loadControl;
     WindowView loadView;
+    GameOverController gameOverControl;
+    GameOverView gameOverView;
 
     Parent startNode;
     Parent recordsNode;
     Parent gameNode;
     Parent loadNode;
+    Parent gameOverNode;
 
 
     public SetupManager() {
         this.startControl = new StartController(this);
         this.recordsControl = new RecordsController(this);
         this.loadControl = new LoadController(this);
-        this.gameControl = new GameController();
+        this.gameControl = new GameController(this);
+        this.gameOverControl = new GameOverController(this);
+
         this.gameView = new GameView(this.gameControl);
         this.startView = new StartView(this.startControl);
         this.recordsView = new RecordsView(this.recordsControl);
         this.loadView = new LoadView(this.loadControl);
+        this.gameOverView = new GameOverView(this.gameOverControl);
     }
 
     @Override
@@ -46,10 +53,11 @@ public class SetupManager extends Application {
     }
 
     private void initNodes() {
-        this.startNode = startView.load();
-        this.recordsNode = recordsView.load();
-        this.gameNode = gameView.load();
-        this.loadNode = loadView.load();
+        this.startNode = this.startView.load();
+        this.recordsNode = this.recordsView.load();
+        this.gameNode = this.gameView.load();
+        this.loadNode = this.loadView.load();
+        this.gameOverNode = this.gameOverView.load();
     }
 
     public void swapToGame() {
@@ -69,5 +77,15 @@ public class SetupManager extends Application {
 
     public void swapMainScreen() {
         this.stage.getScene().setRoot(this.startNode);
+    }
+
+    public void swapToGameOver() {
+        this.stage.getScene().setRoot(this.gameOverNode);
+        this.gameOverControl.run();
+    }
+
+    public void endGame() {
+        System.out.println("Ending game and saving");
+        Platform.exit();
     }
 }

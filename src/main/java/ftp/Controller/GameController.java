@@ -26,6 +26,7 @@ public class GameController {
     private Coord currentPos;
     private List<Coord> sequenceAnswer;
     private Iterator<Coord> sequenceIterator;
+    private SetupManager sceneMaster;
 
     @FXML
     private Button submit;
@@ -49,7 +50,8 @@ public class GameController {
     private List<GridCell> userInput;
     private Label[][] boardLabel;
 
-    public GameController() {
+    public GameController(SetupManager s) {
+        this.sceneMaster = s;
         this.score = 0;
         this.level = 1;
         this.lives = 3;
@@ -67,8 +69,12 @@ public class GameController {
     }
 
     private void setLabels() {
+        if (this.lives == 0) {
+            this.sceneMaster.swapToGameOver();
+        }
         this.scoreLabel.setText("Score: " + this.score);
         this.livesLabel.setText("Lives: " + this.lives);
+
     }
 
     private void initBoard() {
@@ -106,8 +112,7 @@ public class GameController {
 
     private void initButtons() {
         this.exitButton.setOnAction(e -> {
-            System.out.println("Saving, exiting");
-            Platform.exit();
+            this.sceneMaster.endGame();
         });
         this.hideButtons();
         this.submit.setOnAction(e -> {
