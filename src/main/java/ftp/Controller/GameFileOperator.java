@@ -13,22 +13,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class TxtFileOperator {
+public class GameFileOperator {
 
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final SimpleModule module = new SimpleModule();
 
     public static void write(GameStateJson gsj, Path path) {
-        if (path.toString().endsWith(".txt")) {
-            JsonNode contents = JsonUtils.serializeRecord(gsj);
-            String str = contents.toString();
-            try {
-                Files.write(path, str.getBytes());
-            } catch (IOException e) {
-                throw new RuntimeException("could not write to path");
-            }
-        } else {
-            throw new IllegalArgumentException("invalid path");
+        JsonNode contents = JsonUtils.serializeRecord(gsj);
+        String str = contents.toString();
+        try {
+            Files.write(path, str.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException("could not write to path");
         }
     }
 
@@ -38,15 +34,11 @@ public class TxtFileOperator {
         if (!Files.exists(path)) {
             throw new IllegalArgumentException("Could not read from supplied path");
         }
-        if (path.toString().endsWith(".txt")) {
-            try {
-                JsonParser parser = mapper.getFactory().createParser(path.toFile());
-                return parser.readValueAs(GameStateJson.class);
-            } catch (IOException e) {
-                throw new IllegalArgumentException(e.getMessage());
-            }
-        } else {
-            throw new IllegalArgumentException("Path is not of a .txt file");
+        try {
+            JsonParser parser = mapper.getFactory().createParser(path.toFile());
+            return parser.readValueAs(GameStateJson.class);
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 

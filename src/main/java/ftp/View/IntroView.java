@@ -1,7 +1,6 @@
 package ftp.View;
 
 import ftp.Controller.IntroController;
-import ftp.Controller.RecordsController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -13,7 +12,7 @@ public class IntroView implements WindowView {
     public IntroView(IntroController intro) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-                getClass().getClassLoader().getResource("intro-screen.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/intro-screen.fxml"));
         this.loader.setController(intro);
     }
 

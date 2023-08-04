@@ -70,7 +70,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="guide" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" text="Text Area">
+                        <Label fx:id="guide" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -78,11 +78,7 @@
                               <Insets left="20.0" right="20.0" top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="instructions" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" text="Text Area">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
+                        <Label fx:id="instructions" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" wrapText="true" />
                         <Button fx:id="repeat" mnemonicParsing="false" text="Repeat Animation" />
                         <Button fx:id="submit" mnemonicParsing="false" text="Submit Answer">
                            <VBox.margin>

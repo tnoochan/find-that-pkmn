@@ -2,6 +2,7 @@ package ftp.View;
 
 import ftp.Controller.GameController;
 import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -12,7 +13,7 @@ public class GameView implements WindowView {
     public GameView(GameController g) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-                getClass().getClassLoader().getResource("game-screen.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/game-screen.fxml"));
         this.loader.setController(g);
     }
 

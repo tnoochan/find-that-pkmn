@@ -14,7 +14,7 @@ public class LoadView implements WindowView {
     public LoadView(LoadController r) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-                getClass().getClassLoader().getResource("load-game.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/load-game.fxml"));
         this.loader.setController(r);
     }
 

@@ -11,7 +11,7 @@ public class StartView implements WindowView {
     public StartView(StartController g) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-            getClass().getClassLoader().getResource("starting-screen.fxml"));
+            getClass().getClassLoader().getResource("FXMLFiles/starting-screen.fxml"));
         this.loader.setController(g);
     }
 

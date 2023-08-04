@@ -8,8 +8,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoadController {
 
@@ -65,7 +63,7 @@ public class LoadController {
 
     private void handleStart() {
         Path path = Path.of("savefiles/" + this.confirmFile.getText());
-        GameStateJson record = TxtFileOperator.read(path);
+        GameStateJson record = GameFileOperator.read(path);
         this.sceneMaster.loadContent(record);
     }
 

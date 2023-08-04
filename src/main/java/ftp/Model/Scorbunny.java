@@ -1,24 +1,22 @@
 package ftp.Model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Random;
 
 public class Scorbunny extends Pokemon {
 
-    public Scorbunny(List<Coord> steps, Random rand,
-                   boolean visible) {
-        super(steps, rand, visible, "Scorbunny");
-    }
+//    public Scorbunny(List<Coord> steps, Random rand,
+//                   boolean visible) {
+//        super(steps, rand, visible, "Scorbunny", "Loves to jump around");
+//    }
 
     public Scorbunny() {
-        super("Scorbunny");
-    }
-
-    public Scorbunny(Random rand) {
-        super(rand, "Scorbunny");
+        super("Scorbunny", "Loves to jump around");
     }
 
     @Override
@@ -28,6 +26,16 @@ public class Scorbunny extends Pokemon {
             int yPos = this.rand.nextInt(ybound);
             steps.add(new Coord(xPos, yPos));
         }
+    }
+
+    @Override
+    public ImageView produceImage(int height, int width) throws FileNotFoundException {
+        FileInputStream stream = new FileInputStream("src/main/resources/ImageFiles/scorbunny.png");
+        ImageView output = new ImageView(new Image(stream));
+        output.setFitHeight(height);
+        output.setFitWidth(width);
+        output.setPreserveRatio(true);
+        return output;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class GameOverView implements WindowView {
     public GameOverView(GameOverController g) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-                getClass().getClassLoader().getResource("game-over.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/game-over.fxml"));
         this.loader.setController(g);
     }
 

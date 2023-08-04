@@ -1,7 +1,5 @@
 package ftp.Controller;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import ftp.Model.Json.GameStateJson;
 import ftp.View.*;
 import javafx.application.Application;
@@ -119,8 +117,8 @@ public class SetupManager extends Application {
     }
     public void endGame() {
         GameStateJson savedData = new GameStateJson(this.gameControl);
-        TxtFileOperator.write(savedData,
-                Path.of("savefiles/" + this.gameControl.getName() + ".txt"));
+        GameFileOperator.write(savedData,
+                Path.of("savefiles/" + this.gameControl.getName()));
         Platform.exit();
     }
 
@@ -134,22 +132,4 @@ public class SetupManager extends Application {
         this.gameControl.run();
     }
 
-    /*
-    public GameController(
-            @JsonProperty("level") int level,
-            @JsonProperty("currentPokemon") Pokemon currentPokemon,
-            @JsonProperty("score") int score,
-            @JsonProperty("lives") int lives,
-            @JsonProperty("name") String name,
-            SetupManager sceneMaster) {
-     */
-    // for json
-
-//    public GameController getGameControl() {
-//        return this.gameControl;
-//    }
-//
-//    public RecordsController getRecordsControl() {
-//        return this.recordsControl;
-//    }
 }

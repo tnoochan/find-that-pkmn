@@ -11,7 +11,7 @@ public class RecordsView implements WindowView {
     public RecordsView(RecordsController r) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-                getClass().getClassLoader().getResource("top-records.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/top-records.fxml"));
         this.loader.setController(r);
     }
 
