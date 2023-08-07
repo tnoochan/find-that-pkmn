@@ -11,26 +11,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="backdrop" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <HBox prefHeight="61.0" prefWidth="900.0" spacing="230.0">
+            <HBox prefHeight="61.0" prefWidth="900.0" spacing="200.0">
                <children>
-                  <Label fx:id="scoreLabel" text="Current Score: 0">
+                  <Label fx:id="scoreLabel" text="Score: 0">
                      <font>
-                        <Font size="40.0" />
+                        <Font name="Kefa Regular" size="40.0" />
                      </font>
                   </Label>
                   <Label fx:id="livesLabel" text="Lives: 3">
                      <font>
-                        <Font size="40.0" />
+                        <Font name="Kefa Regular" size="40.0" />
                      </font>
                   </Label>
                   <Button fx:id="exitButton" mnemonicParsing="false" text="SAVE &amp; EXIT">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Kefa Regular" size="15.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="110.0" top="15.0" />
+                     </HBox.margin>
                   </Button>
                </children>
                <VBox.margin>
@@ -67,23 +70,32 @@
                      <children>
                         <Label text="Instructions:">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="Kefa Regular" size="20.0" />
                            </font>
                         </Label>
                         <Label fx:id="guide" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" wrapText="true">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="Kefa Regular" size="20.0" />
                            </font>
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="instructions" alignment="TOP_LEFT" prefHeight="128.0" prefWidth="308.0" wrapText="true" />
-                        <Button fx:id="repeat" mnemonicParsing="false" text="Repeat Animation" />
+                        <Label fx:id="instructions" alignment="CENTER" prefHeight="128.0" prefWidth="308.0" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Kefa Regular" size="13.0" />
+                           </font></Label>
+                        <Button fx:id="repeat" mnemonicParsing="false" text="Repeat Animation">
+                           <font>
+                              <Font name="Kefa Regular" size="13.0" />
+                           </font></Button>
                         <Button fx:id="submit" mnemonicParsing="false" text="Submit Answer">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Kefa Regular" size="13.0" />
+                           </font>
                         </Button>
                      </children>
                   </VBox>
@@ -93,8 +105,14 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Kefa Regular" size="13.0" />
+               </font>
             </Button>
          </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
       </VBox>
    </children>
 </AnchorPane>

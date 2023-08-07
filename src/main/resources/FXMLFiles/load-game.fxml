@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="backdrop" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-5.0" layoutY="4.0" prefHeight="600.0" prefWidth="1000.0">
          <children>
             <Label text="Load Game">
                <font>
-                  <Font size="70.0" />
+                  <Font name="Kefa Regular" size="70.0" />
                </font>
                <padding>
                   <Insets top="20.0" />
@@ -27,7 +27,7 @@
                      <children>
                         <Label text="Name of Save File">
                            <font>
-                              <Font size="30.0" />
+                              <Font name="Kefa Regular" size="30.0" />
                            </font>
                         </Label>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="250.0" prefWidth="500.0">
@@ -48,11 +48,20 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1000.0" spacing="20.0">
                <children>
-                  <Label fx:id="confirmFile" text="Label" />
-                  <Button fx:id="start" mnemonicParsing="false" text="Open save file" />
+                  <Label fx:id="confirmFile" text="Label">
+                     <font>
+                        <Font name="Kefa Regular" size="13.0" />
+                     </font></Label>
+                  <Button fx:id="start" mnemonicParsing="false" text="Open save file">
+                     <font>
+                        <Font name="Kefa Regular" size="13.0" />
+                     </font></Button>
                </children>
             </HBox>
-            <Button fx:id="returnFromLoad" mnemonicParsing="false" text="Return to Main Screen" />
+            <Button fx:id="returnFromLoad" mnemonicParsing="false" text="Return to Main Screen">
+               <font>
+                  <Font name="Kefa Regular" size="13.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

@@ -4,32 +4,30 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import ftp.Model.Json.GameStateJson;
+import ftp.Model.Json.GameRecordsJson;
 import ftp.Model.Json.PairDeserializer;
-import ftp.Model.Json.PokemonDeserializer;
 import ftp.Model.JsonUtils;
-import ftp.Model.Pokemon;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javafx.util.Pair;
 
 /**
- * Represents an object that operates the game files
+ * Represents an operator that reads/write data associated with top records
  */
-public class GameFileOperator {
+public class TopRecordsOperator {
 
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final SimpleModule module = new SimpleModule();
 
     /**
-     * Writes the game data to the path
+     * Writes to path data contianing the game's records
      *
-     * @param gsj - the game data to be saved
-     * @param path - the path to write the data to
+     * @param grj - the records data
+     * @param path - the path to write to
      */
-    public static void write(GameStateJson gsj, Path path) {
-        JsonNode contents = JsonUtils.serializeRecord(gsj);
+    public static void write(GameRecordsJson grj, Path path) {
+        JsonNode contents = JsonUtils.serializeRecord(grj);
         String str = contents.toString();
         try {
             Files.write(path, str.getBytes());
@@ -39,14 +37,13 @@ public class GameFileOperator {
     }
 
     /**
-     * Reads from the path and returns the game's data
+     * Attempts to read from the path and extract top records data
      *
      * @param path - the path to read from
-     * @return - the game's data as a GameStateJson
+     * @return the top records data
      */
-    public static GameStateJson read(Path path) {
-        // custom deserializes for abstract/interfaces
-        module.addDeserializer(Pokemon.class, new PokemonDeserializer());
+    public static GameRecordsJson read(Path path) {
+        // custom deserializer
         module.addDeserializer(Pair.class, new PairDeserializer());
         mapper.registerModule(module);
         if (!Files.exists(path)) {
@@ -54,7 +51,7 @@ public class GameFileOperator {
         }
         try {
             JsonParser parser = mapper.getFactory().createParser(path.toFile());
-            return parser.readValueAs(GameStateJson.class);
+            return parser.readValueAs(GameRecordsJson.class);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
