@@ -12,15 +12,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <Label text="How to Play">
-               <font>
-                  <Font name="Kefa Regular" size="70.0" />
-               </font>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-            </Label>
-            <Label fx:id="instruction" alignment="TOP_LEFT" prefHeight="372.0" prefWidth="738.0">
+            <Label fx:id="instruction" alignment="TOP_LEFT" prefHeight="514.0" prefWidth="971.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -28,10 +20,13 @@
             <Label fx:id="warning" text="Label" textFill="RED">
                <font>
                   <Font name="Kefa Regular" size="13.0" />
-               </font></Label>
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
             <TextField fx:id="textArea" maxWidth="300.0" promptText="Enter name for game file">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
                <font>
                   <Font name="Kefa Regular" size="13.0" />
@@ -39,7 +34,7 @@
             </TextField>
             <Button fx:id="startButton" mnemonicParsing="false" text="Start">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
                <font>
                   <Font name="Kefa Regular" size="13.0" />

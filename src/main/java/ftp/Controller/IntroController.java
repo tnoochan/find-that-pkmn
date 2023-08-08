@@ -2,6 +2,8 @@ package ftp.Controller;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+
+import ftp.View.BackgroundUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +22,8 @@ public class IntroController {
     private TextField textArea;
     @FXML
     private Button startButton;
+    @FXML
+    private Label instruction;
 
     /**
      * Constructs this controller with the supplied setup manager
@@ -39,10 +43,18 @@ public class IntroController {
     }
 
     /**
-     * Initializes the button's action handlers
+     * Initializes the button's action handlers and background
      */
     private void initButtons() {
+        this.initBackground();
         this.startButton.setOnAction(e -> this.handleStart());
+    }
+
+    /**
+     * Initializes the background
+     */
+    private void initBackground() {
+        this.instruction.setBackground(BackgroundUtil.loadImage("src/main/resources/BackgroundFiles/instructions.png"));
     }
 
     /**
