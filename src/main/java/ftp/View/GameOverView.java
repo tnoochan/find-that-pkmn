@@ -8,9 +8,7 @@ import javafx.scene.Parent;
 /**
  * Represents the view for the game over screen
  */
-public class GameOverView implements WindowView {
-
-    private final FXMLLoader loader;
+public class GameOverView extends WindowView {
 
     /**
      * Constructs this view with the supplied GameOverController
@@ -24,18 +22,4 @@ public class GameOverView implements WindowView {
         this.loader.setController(control);
     }
 
-    /**
-     * Attempts to load the game over screen
-     *
-     * @return - the parent node for the game over screen
-     * @throws IllegalStateException if the scene could not be loaded
-     */
-    @Override
-    public Parent load() throws IllegalStateException {
-        try {
-            return this.loader.load();
-        } catch (IOException e) {
-            throw new IllegalStateException("unable to load");
-        }
-    }
 }

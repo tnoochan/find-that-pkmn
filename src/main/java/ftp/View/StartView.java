@@ -8,10 +8,7 @@ import javafx.scene.Parent;
 /**
  * Represents the view for the starting screen
  */
-public class StartView implements WindowView {
-
-    private final FXMLLoader loader;
-
+public class StartView extends WindowView {
     /**
      * Constructs this view with the supplied StartController
      *
@@ -20,21 +17,8 @@ public class StartView implements WindowView {
     public StartView(StartController control) {
         this.loader = new FXMLLoader();
         this.loader.setLocation(
-            getClass().getClassLoader().getResource("FXMLFiles/starting-screen.fxml"));
+                getClass().getClassLoader().getResource("FXMLFiles/starting-screen.fxml"));
         this.loader.setController(control);
     }
 
-    /**
-     * Attempts to load the starting screen
-     *
-     * @return - the parent node for the starting screen
-     * @throws IllegalStateException if the scene could not be loaded
-     */
-    public Parent load() throws IllegalStateException {
-        try {
-            return this.loader.load();
-        } catch (IOException e) {
-            throw new IllegalStateException("Unable to load");
-        }
-    }
 }

@@ -1,18 +1,29 @@
 package ftp.View;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+
+import java.io.IOException;
 
 /**
  * Represents view for an application window
  */
-public interface WindowView {
+public abstract class WindowView {
+
+    protected FXMLLoader loader;
 
     /**
-     * Loads the scene associated with this view
+     * Attempts to load the starting screen
      *
-     * @return - a Parent node of which the scene is a part of
-     * @throws IllegalStateException if the scene cannot be loaded
+     * @return - the parent node for the starting screen
+     * @throws IllegalStateException if the scene could not be loaded
      */
-    Parent load() throws IllegalStateException;
+    public Parent load() throws IllegalStateException {
+        try {
+            return this.loader.load();
+        } catch (IOException e) {
+            throw new IllegalStateException("Unable to load");
+        }
+    }
 
 }

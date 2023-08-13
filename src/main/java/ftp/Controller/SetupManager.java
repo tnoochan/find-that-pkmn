@@ -22,26 +22,26 @@ import javafx.stage.Stage;
  */
 public class SetupManager extends Application {
 
-    Stage stage;
-    StartController startControl;
-    WindowView startView;
-    GameController gameControl;
-    WindowView gameView;
-    RecordsController recordsControl;
-    WindowView recordsView;
-    LoadController loadControl;
-    WindowView loadView;
-    GameOverController gameOverControl;
-    GameOverView gameOverView;
-    IntroController introControl;
-    WindowView introView;
+    private Stage stage;
+    private StartController startControl;
+    private WindowView startView;
+    private GameController gameControl;
+    private WindowView gameView;
+    private RecordsController recordsControl;
+    private WindowView recordsView;
+    private LoadController loadControl;
+    private WindowView loadView;
+    private GameOverController gameOverControl;
+    private WindowView gameOverView;
+    private IntroController introControl;
+    private WindowView introView;
 
-    Parent startNode;
-    Parent recordsNode;
-    Parent gameNode;
-    Parent loadNode;
-    Parent gameOverNode;
-    Parent introNode;
+    private Parent startNode;
+    private Parent recordsNode;
+    private Parent gameNode;
+    private Parent loadNode;
+    private Parent gameOverNode;
+    private Parent introNode;
 
     /**
      * Constructs a setup manager, default initializes all variables
