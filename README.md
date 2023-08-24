@@ -23,7 +23,10 @@ Background drawings for each scene were made by me using Piskel. Images of each 
 - Arcanine: https://www.serebii.net/pokedex-swsh/arcanine/
 
 Scenes/FXML files were made using SceneBuilder.
+## UML Diagram
+![UML_Diagram.png](UML_Diagram.png)
 
 ## Known Bugs/Ongoing Objectives
 - There is a bug with the hashcode method for determining if two cell grids are the same
 - Unit testing for JavaFX objects
+
