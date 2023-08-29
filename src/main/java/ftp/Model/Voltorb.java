@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,10 +15,14 @@ import javafx.scene.image.ImageView;
  */
 public class Voltorb extends Pokemon {
 
-    //    public Voltorb(List<Coord> steps, Random rand,
-    //                     boolean visible) {
-    //        super(steps, rand, visible, "Voltorb", "Loves to roll around in adjacent squares");
-    //    }
+    /**
+     * Constructs a blank Voltorb with supplied random object
+     *
+     * @param rand - the random object associated with this Voltorb
+     */
+    public Voltorb(Random rand) {
+        super(rand);
+    }
 
     /**
      * Constructs a Voltorb object with it's description
@@ -39,19 +45,21 @@ public class Voltorb extends Pokemon {
         int startX = this.rand.nextInt(xbound);
         int startY = this.rand.nextInt(ybound);
         this.steps.add(new Coord(startX, startY));
-        List<int[]> vectors = new ArrayList<>(Arrays.asList(
-                new int[] {0, 1},
-                new int[] {1, 0},
-                new int[] {0, -1},
-                new int[] {-1, 0}));
         for (int i = 1; i < numSteps; i++) {
             boolean valid = false;
+            List<int[]> vectors = new ArrayList<>(Arrays.asList(
+                    new int[] {0, 1},
+                    new int[] {1, 0},
+                    new int[] {0, -1},
+                    new int[] {-1, 0}));
             while (!valid) {
-                int[] curVec = vectors.get(this.rand.nextInt(4));
+                int[] curVec = vectors.get(this.rand.nextInt(vectors.size()));
                 startX += curVec[0];
                 startY += curVec[1];
                 if (startX >= 0 && startX < xbound && startY >= 0 && startY < ybound) {
                     valid = true;
+                } else {
+                    vectors.remove(curVec);
                 }
 
             }

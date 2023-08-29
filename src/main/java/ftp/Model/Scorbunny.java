@@ -2,6 +2,8 @@ package ftp.Model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Random;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -10,10 +12,14 @@ import javafx.scene.image.ImageView;
  */
 public class Scorbunny extends Pokemon {
 
-    //    public Scorbunny(List<Coord> steps, Random rand,
-    //                   boolean visible) {
-    //        super(steps, rand, visible, "Scorbunny", "Loves to jump around");
-    //    }
+    /**
+     * Creates a blank Scorbunny with the supplied random object
+     *
+     * @param rand - the random object associated with this Scorbunny
+     */
+    public Scorbunny(Random rand) {
+        super(rand);
+    }
 
     /**
      * Constructs a Scorbunny object with its description

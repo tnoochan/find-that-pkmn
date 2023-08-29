@@ -42,11 +42,17 @@ public abstract class Pokemon {
         this.description = description;
     }
 
-    //    public Pokemon(Random rand, String name) {
-    //        this.rand = rand;
-    //        this.name = name;
-    //        this.description = "";
-    //    }
+    /**
+     * Constructs a blank Pokemon with the supplied random object
+     *
+     * @param rand - the random object associated with this Pokemon
+     */
+    public Pokemon(Random rand) {
+        this.rand = rand;
+        this.name = "No name";
+        this.steps = new ArrayList<>();
+        this.description = "No description";
+    }
 
     /**
      * Constructs a Pokemon with the supplied name and description

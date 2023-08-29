@@ -2,6 +2,8 @@ package ftp.Model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Random;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -9,6 +11,15 @@ import javafx.scene.image.ImageView;
  * Represents Arcanine, a Pokemon
  */
 public class Arcanine extends Pokemon {
+
+    /**
+     * Constructs a blank Arcanine with supplied random object
+     *
+     * @param rand - the random object associated with this Arcanine
+     */
+    public Arcanine(Random rand) {
+        super(rand);
+    }
 
     /**
      * Constructs an Arcanine object with its description

@@ -1,1 +1,1 @@
-{"mainController":{"level":4,"currentPokemon":{"steps":[{"x":5,"y":4},{"x":1,"y":0},{"x":0,"y":2},{"x":0,"y":1}],"visible":false,"name":"Scorbunny","description":"Loves to jump around"},"score":6,"lives":3,"name":"asdf"}}
+{"mainController":{"level":4,"currentPokemon":{"steps":[{"x":5,"y":4},{"x":1,"y":0},{"x":0,"y":2},{"x":0,"y":1}],"visible":false,"name":"Scorbunny","description":"Loves to jump around"},"score":6,"lives":2,"name":"asdf"}}
