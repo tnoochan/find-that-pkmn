@@ -16,6 +16,8 @@ A Pokémon-themed memory game inspired by Simon Says. The objective is to observ
 - A record's entry name is determined by the name of the save file the user first enters when starting a new game
 - The entry gets recorded only after reaching the game over screen
 - Only the top 5 records are recorded
+## General Instructions
+![src/main/resources/BackgroundFiles/instructions.png](src/main/resources/BackgroundFiles/instructions.png)
 ## Credits
 Background drawings for each scene were made by me using Piskel. Images of each Pokémon came from their respective Serebii sites:
 - Scorbunny: https://www.serebii.net/pokedex-swsh/scorbunny/
